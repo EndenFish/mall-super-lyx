@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <router-view/> -->
+    <keep-alive exclude="Detail">
+        <router-view/>
+    </keep-alive>
+    <!-- 用插槽slot来实现动态插入，可以动态更改 -->
+    <main-bar/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainBar from 'components/content/MainBar/MainBar'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainBar
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "assets/css/base.css";
 </style>
