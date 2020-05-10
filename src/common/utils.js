@@ -1,7 +1,7 @@
 //公共方法
 
 // 防抖操作
-export function debouce(func, delay){
+export function debounce(func, delay){
     let timer = null;
 
     return function (...args){
@@ -9,7 +9,7 @@ export function debouce(func, delay){
             clearTimeout(timer)
         }
         timer = setTimeout(() => {
-            func(...args)
+            func.apply(...args)
         }, delay);
     }
 }

@@ -151,6 +151,8 @@ import HomeViews from "./childComps/HomeViews";
 import FeatureViews from "./childComps/FeatureViews";
 
 import { getHomeMultidata, getHomeGoodsdata } from "network/home";
+import {debounce} from "common/utils"
+import {imge} from "common/mixin"
 
 export default {
   name: "Home",
@@ -201,14 +203,18 @@ export default {
     this.getHomeGoodsdata('sell')
     
   },
+  mixins: [imge],
   mounted(){
-    // 监听item中图片加载完成
-    // 没有bus  在main中添加原型
-    this.$bus.$on('ItemImageLoad',()=>{
-      console.log('---');
-      // 重新计算  可滚动的高度，就不会出现滚动问题
-      this.$refs.scroll.scroll.refresh();
-    })
+    // const refresh = debounce(this.$refs.scroll.scroll.refresh,50)
+    // // 监听item中图片加载完成
+    // // 没有bus  在main中添加原型
+    // this.$bus.$on('ItemImageLoad',()=>{
+      
+    //   // 重新计算  可滚动的高度，就不会出现滚动问题
+    //   // this.$refs.scroll.scroll.refresh();
+    //   refresh();
+    //   console.log('---');
+    // })
     
     // 2.获取taboffsetTop
     // 这里直接是获取不到组件的offsetTop
